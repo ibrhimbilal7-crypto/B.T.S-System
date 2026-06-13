@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>نظام B.T.S</title>
+    <style>
+        :root { --primary: #6366f1; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { background: var(--card); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin: auto; max-width: 900px; text-align: center; }
+        input { width: 90%; padding: 8px; border-radius: 5px; border: 1px solid #334155; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; color: #000; border-radius: 10px; overflow: hidden; }
+        th { background: #334155; color: white; padding: 12px; }
+        td { padding: 8px; border: 1px solid #ddd; }
+        button { background: #22c55e; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .logout { background: #ef4444; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="loginPage" class="container">
+        <h1>نظام B.T.S</h1>
+        <input type="text" id="user" placeholder="اسم المستخدم"><br>
+        <input type="password" id="pass" placeholder="كلمة السر"><br><br>
+        <button onclick="login()">دخول</button>
+    </div>
+
+    <div id="dataPage" class="container" style="display: none;">
+        <h2>سجل البيانات - B.T.S</h2>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>الرقم الوطني</th>
+                        <th>الاسم</th>
+                        <th>الرقم التعريفي</th>
+                        <th>اسم المحفظة / البنك</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    </tbody>
+            </table>
+        </div>
+        <button onclick="alert('تم الإدخال بنجاح!')">إدخال البيانات</button><br>
+        <button class="logout" onclick="location.reload()">تسجيل خروج</button>
+    </div>
+
+    <script>
+        function login() {
+            var u = document.getElementById('user').value.trim();
+            var p = document.getElementById('pass').value.trim();
+            
+            if(u === 'Abdullah-821' && p === 'abdd98e9') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dataPage').style.display = 'block';
+                generateRows();
+            } else {
+                alert('خطأ في البيانات');
+            }
+        }
+
+        function generateRows() {
+            var tbody = document.getElementById('tableBody');
+            for(var i = 1; i <= 30; i++) {
+                tbody.innerHTML += `<tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>`;
+            }
+        }
+    </script>
+</body>
+</html>
